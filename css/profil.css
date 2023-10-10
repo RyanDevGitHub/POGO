@@ -1,0 +1,367 @@
+/*  DEBUT GENERALE */
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-family: FontAwesome;
+}
+a{
+    outline: none;
+    text-decoration:none;
+    color: black;
+}
+body{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1000px auto auto ;
+}
+li{
+    list-style: none;
+    height: 30px;
+    padding: 15px;
+    cursor: pointer;
+
+}
+/*  FIN GENERALE */
+
+/*  DEBUT HEADER */
+header .head{
+    grid-column-start: 1;
+    grid-column-end:2 ;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    background-color: #e1e1e1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   /* border-top: 2rem solid #494949;*/
+}
+.logo-accueil{
+    text-align: center;
+}
+.head a{
+    outline: none;
+    text-decoration: none;
+    color: black;
+    width: 100%;
+}
+header img {
+    padding: 1rem 0rem;
+    width: 30%;
+    text-align: center;
+}
+header .icon i{
+    padding: 0.5rem 1rem;
+    font-size: 30px;
+    text-align: center;
+}
+header .search{
+    display: flex;
+    flex-direction: row;
+}
+header .search input{
+    display: none;
+    padding-left: 10px;
+}
+header .search button{
+    border: none;
+    background-color: rgb(0, 0, 0,0);
+
+}
+header .search input.active{
+    height: 75%;
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+    border: none;
+    border-radius:10px ;
+}
+
+header .icon-search i{
+    padding: 1rem 0.5rem;
+}
+header .icon-search i:hover{
+    border-bottom:solid 1px #282841;
+}   
+header nav ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+nav ul li{
+    padding: 1.5rem 1rem;
+    
+}
+nav ul li:hover{
+    border-bottom: solid 2px #282841;
+}
+/*  FIN HEADER */
+
+section{
+    grid-column: 1;
+    grid-row-start: 2;
+    grid-row-end:3 ;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;   
+}
+
+/* SECTION CART */
+.information h2{
+    height: 70px;
+    text-align: center;
+    padding: 30px;
+    color: #282841;
+    text-decoration: overline;
+    text-transform: uppercase;
+}
+
+.information .mainClient {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profil-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+.profil-section .navigation{
+    margin: 1rem 0rem 4rem 0rem;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.42);
+    width: 20%;
+    height: 85%;
+}
+.navigation ul a li {
+    padding-top: 0.3rem;
+    padding-left: 0.5rem;
+}
+.navigation ul li:hover{
+    border-bottom: solid 2px #282841;
+}
+.navigation ul a li.active{
+    font-size: 20px;
+    padding: 2rem;
+    color: #282841;
+
+}
+.profil-section .information{
+    background-color: #ffffff;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.42);
+    width: 75%;
+    height: 800px;
+    margin: 1rem 1rem 4rem 0rem ;  
+    overflow: scroll;
+}
+/* DEBUT CSS MON COMPTE  */
+.information .mon_compte{
+    display: none ;
+}
+.information .mon_compte.active{
+    display: block ;
+}
+.message-error{
+    display: none;
+}
+.message-error.active{
+    display: block;
+    color: red;
+    font-size: 15px;
+}
+.information .mon_compte.active h2{
+    padding: 1rem;
+    background-color: #b4b1b1;
+}
+.information .mon_compte.active h5{
+    font-size: 15px;
+    padding: 1rem;
+}
+.information .mon_compte.active .form_profil {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    
+}
+.information .mon_compte.active .form_profil div{
+    padding: 1rem;
+}
+.information .mon_compte.active input[type=text],input[type="password"],input[type="email"]{
+        height: 20px;
+        width: 80%;
+        border: none;
+        border-bottom: 1px solid black;
+}
+.information .mon_compte.active input[type=text]:focus,input[type="password"]:focus,input[type="email"]:focus{
+    outline: none;
+    border: solid 2px rgb(51, 209, 64);
+    border-radius: 5px;
+}
+
+.information .mon_compte.active input[type=text].error:focus,input[type="password"].error:focus,input[type="email"].error:focus{
+    outline: none;
+    border: solid 2px rgb(209, 51, 51);
+    border-radius: 5px;
+}
+input[type=submit].send{
+    display: inline;
+    margin: 0;
+    width: 100px;
+    height: 30px;
+    background-color: #282841;
+    color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btnRetourner {
+    padding: 6px;
+    margin: 0;
+    width: 100px;
+    height: 30px;
+    background-color: #282841;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.search-button {
+    border: none;
+    background-color: #fff;
+    cursor:pointer;
+}
+.input[type=submit]:hover{
+    background-color: #e1e1e1;
+    color: #282841;
+
+}
+/* FIN CSS MON COMPTE  */
+
+/* DEBUT HISTORIQUE DE COMMANDE */
+.information .historique_de_commande.active{
+    display: block ;
+}
+.information .historique_de_commande.active h2{
+    padding: 1rem;
+    background-color: #b4b1b1;
+}
+.information .historique_de_commande.active{
+    display: flex;
+    flex-direction: column;
+}
+.information .historique_de_commande.active .commande{
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+/* FIN HISTORIQUE DE COMMANDE */
+
+/* DEBUT MARQUES FAVORITE */
+.information .marques_favorites.active{
+    display: block ;
+}
+.information .marques_favorites.active h2{
+    padding: 1rem;
+    background-color: #b4b1b1;
+}
+.information .marques_favorites.active .container{
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 1rem;
+}
+
+
+/* FIN MARQUES FAVORITES */
+
+/* DEBUT ARTICLES TABLE */
+table {
+    border-collapse: collapse;
+    margin: 12px;
+  }
+  
+  th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  td {
+    text-align: center;
+  }
+
+ 
+/* FIN ARTICLES TABLE */
+#btn_div{
+    width: 200px;
+    height: 100px;
+    align-items: center;
+}
+#btnRetourner{
+    display: inline;
+    width: 150px;
+    height: 70px;
+    padding: 5px;
+    margin: 20px;
+    background-color: #282841;
+    color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#btnRetourner:hover{
+    background-color:#b4b1b1 ;
+    border: black solid 2px;
+    color: black;
+}
+/* FIN SECTION CART*/
+
+/* SECTION RESEAU */
+
+.reseau{
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.reseau p{
+ padding: 2rem 0rem;
+ margin-right: 2rem ;
+}
+.reseau .logo-reseau{
+    padding: 2rem 0rem;
+    margin-right: 10px;
+}
+/* FIN SECTION RESEAU */
+
+/*  DEBUT FOOTER */
+footer{
+    grid-row:4;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+footer .info-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 2rem 0rem 1rem 0rem;
+}
+footer .info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+footer .info .info-assistance,.info-partenariats,.info-propo{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.CGU p {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 20px;
+}
+/*  FIN FOOTER */

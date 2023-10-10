@@ -1,0 +1,118 @@
+
+.form_box{
+    width: 100%;
+    height: 95%;
+    position: relative;
+    padding-top: 20px;
+    margin: 0 auto;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.labelBrand {
+    font-weight: bold;
+}
+
+.errMsg {
+    font-size: 80%;
+    color: red;
+}
+
+.formChangeStyle {
+    margin: 10px;
+}
+
+.buttonZone {
+    display: flex;
+}
+
+.left {
+    width: 45%;
+    height: 100%;
+    margin-left: 30px;
+    float: left;
+    align-items: center;
+    position: relative;
+}
+.right {
+    width: 45%;
+    height: 100%;
+    margin-right: 30px;
+    float: right;
+    align-items: center;
+}
+
+.ipText,.ipNum,.select{
+    width: 100%;
+    padding: 12px 8px;
+    margin-top: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+.linkAdd{
+    width: 100%;
+    text-align: right;
+}
+.linkAdd .link{
+    font-size: 15px;
+    color:#282841
+}
+.link:hover{
+    text-decoration: underline;
+}
+#photo{
+    display: block;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 6px;
+}
+
+#button_box{
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 50px 0;
+    width: 100%;
+}
+
+.verify{
+    width: 100px;
+    padding: 8px;
+    color: white;
+    background-color: #282841;
+    border: 1px solid grey;
+    border-radius: 8px;
+    margin: 8px;
+    text-align: center; 
+}
+
+.verify:hover{
+    background-color: #dfdfdf;
+    color: black;
+    border-color: black;
+    cursor: pointer;
+}
+
+
+#retourner{
+    text-decoration: none;
+}
+
+.labelProduct{
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.fontProduct{
+    color: rgb(255, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    text-transform: lowercase;
+    font-size: 9px;
+}
+
