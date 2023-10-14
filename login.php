@@ -17,7 +17,6 @@
             </div>
             <div class="input-form">
                 <p>Enregistrez-vous</p>
-                <?php print(json_encode($_SESSION))?>
                 <input type="email" name="email" placeholder="Adresse Email" required>
                 <input type="password" name="mdp" placeholder="Mot de passe" minlength="4" required>
                 <input type="submit" value="Se connecter">
