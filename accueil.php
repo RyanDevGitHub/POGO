@@ -40,7 +40,13 @@ if (!$_SESSION['statue'])
         <h2 id='title'>Nos Nouveautés</h2>
         <div class="section-article column">
             <?php
+            $_GLOBALS['keyswords'] = [];
             include_once("./database/db.php");
+            $data = $pdo->query("SELECT * FROM keyswords");
+            $rowkeyword = $data->fetchAll();
+            foreach($rowkeyword as $keyword){
+                $_GLOBALS['keyswords'][] = $keyword[1];
+            }
             $data = $pdo->query("SELECT * FROM productes ORDER BY id_producte ASC");
             $rowPro = $data->fetchAll();
             for ($i = 0; $i < 8; $i++) {
