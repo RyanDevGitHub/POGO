@@ -2,6 +2,14 @@
 session_start();
 if (!$_SESSION['statue'])
     header("Location: ./index.php");
+
+$GLOBALS['keyswords'] = [];
+include_once("./database/db.php");
+$data = $pdo->query("SELECT * FROM keyswords");
+$rowkeyword = $data->fetchAll();
+foreach($rowkeyword as $keyword){
+    array_push($GLOBALS['keyswords'],$keyword[1]);
+}
 ?>
 
 <!--HEAD-->
@@ -40,13 +48,6 @@ if (!$_SESSION['statue'])
         <h2 id='title'>Nos Nouveautés</h2>
         <div class="section-article column">
             <?php
-            $_GLOBALS['keyswords'] = [];
-            include_once("./database/db.php");
-            $data = $pdo->query("SELECT * FROM keyswords");
-            $rowkeyword = $data->fetchAll();
-            foreach($rowkeyword as $keyword){
-                $_GLOBALS['keyswords'][] = $keyword[1];
-            }
             $data = $pdo->query("SELECT * FROM productes ORDER BY id_producte ASC");
             $rowPro = $data->fetchAll();
             for ($i = 0; $i < 8; $i++) {
@@ -90,5 +91,4 @@ if (!$_SESSION['statue'])
     <!--DEBUT FOOTER-->
 </body>
 <script src="./JavaScript/accueil.js"> </script>
-
 </html>

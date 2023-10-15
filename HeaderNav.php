@@ -12,6 +12,7 @@ $namePage = explode(".php", $arr[array_key_last($arr)])[0];
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                     <input type="text" class="text-search" name="productName">
+                    <div id="suggestions"></div>
                 </form>
             </div>
         </div>
@@ -48,10 +49,12 @@ $namePage = explode(".php", $arr[array_key_last($arr)])[0];
         </ul>
     </nav>
     <script>
+        var keywords = <?php echo json_encode($GLOBALS["keyswords"]); ?>; 
         const search_text = document.querySelector(".text-search");
         const button_search = document.querySelector(".search-button");
         button_search.addEventListener("click", () => {
             search_text.classList.toggle("active");
         });
     </script>
+    <script src="./JavaScript/auto-complete.js"> </script>
 </header>
