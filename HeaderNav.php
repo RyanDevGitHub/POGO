@@ -7,12 +7,14 @@ $namePage = explode(".php", $arr[array_key_last($arr)])[0];
     <div class="head">
         <div class="icon">
             <div class="search">
-                <form class="search" action="./product_by_name.php" method="POST">
+                <form class="search form" action="./product_by_name.php" method="POST">
                     <button class="search-button" type="button">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                    <input type="text" class="text-search" name="productName">
-                    <div id="suggestions"></div>
+                    <div>
+                        <input type="text" class="text-search" name="productName" autocomplete="off">
+                        <div id="suggestions"></div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -51,10 +53,14 @@ $namePage = explode(".php", $arr[array_key_last($arr)])[0];
     <script>
         var keywords = <?php echo json_encode($GLOBALS["keyswords"]); ?>; 
         const search_text = document.querySelector(".text-search");
+        const suggestion_container = document.getElementById("suggestions");
         const button_search = document.querySelector(".search-button");
+        
         button_search.addEventListener("click", () => {
             search_text.classList.toggle("active");
+            suggestion_container.classList.toggle("active");
         });
+
     </script>
     <script src="./JavaScript/auto-complete.js"> </script>
 </header>

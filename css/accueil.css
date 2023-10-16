@@ -62,6 +62,30 @@ header .search input{
     display: none;
     padding-left: 10px;
 }
+
+#suggestions{
+    display: none;
+    padding-left: 10px;
+}
+
+#suggestions.active{
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 17%;
+    border-radius: 10px;
+    text-align: left;
+}
+#suggestions div{
+    display: none;
+    padding-left: 10px;
+}
+#suggestions div.active{
+    display: block;
+    padding-left: 10px;
+}
+
 header .search button{
     border: none;
     background-color: rgb(0, 0, 0,0);
@@ -74,6 +98,10 @@ header .search input.active{
     border: none;
     border-radius:10px ;
 }
+#suggestions div.active:hover{
+    cursor: pointer;
+}
+
 
 header .icon-search i{
     padding: 1rem 0.5rem;
