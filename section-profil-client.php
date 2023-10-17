@@ -84,3 +84,4 @@ if ($_SESSION['resulte-true'] === false) {
     }
 </script>
 <script src="./JavaScript/profil.js"></script>
+<script src="./JavaScript/auto-complete.js"></script>

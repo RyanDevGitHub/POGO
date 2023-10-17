@@ -185,4 +185,4 @@ include("./footer.php");
         document.getElementById("produitForm").submit();
     }
 </script>
-<script src="./JavaScript/accueil.js"></script>
+<!-- <script src="./JavaScript/accueil.js"></script> -->

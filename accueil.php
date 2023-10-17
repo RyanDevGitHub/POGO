@@ -3,12 +3,12 @@ session_start();
 if (!$_SESSION['statue'])
     header("Location: ./index.php");
 
-$GLOBALS['keyswords'] = [];
+$_SESSION['keyswords'] = [];
 include_once("./database/db.php");
 $data = $pdo->query("SELECT * FROM keyswords");
 $rowkeyword = $data->fetchAll();
 foreach($rowkeyword as $keyword){
-    array_push($GLOBALS['keyswords'],$keyword[1]);
+    array_push($_SESSION['keyswords'],$keyword[1]);
 }
 ?>
 

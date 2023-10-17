@@ -6,6 +6,15 @@ document.addEventListener("DOMContentLoaded", function() {
     var inputSearchBar = document.querySelector(".text-search");
     var suggestions = document.getElementById("suggestions");
     
+
+    const search_text = document.querySelector(".text-search");
+    const suggestion_container = document.getElementById("suggestions");
+    const button_search = document.querySelector(".search-button");
+        
+    button_search.addEventListener("click", () => {
+        search_text.classList.toggle("active");
+        suggestion_container.classList.toggle("active");
+    });
     //create event listener in input for any push and check matching keyword
     inputSearchBar.addEventListener("input",function(event){
         var inputValue = this.value.toLowerCase();

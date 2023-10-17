@@ -88,6 +88,7 @@
         </div>
     </div>
 </section>
+<script src="./JavaScript/.auto-complete.js"></script>
 <script src="./JavaScript/<?php switch ($_GET['page']) {
                                 case 'InfosClient':
                                     echo 'profil-admin_info_client.js';
