@@ -1,15 +1,12 @@
+<?php 
+// Include the configuration file  
+require_once './config/configPaypal.php'; 
+?>
+
+<script src="https://www.paypal.com/sdk/js?client-id=<?php echo PAYPAL_SANDBOX?PAYPAL_SANDBOX_CLIENT_ID:PAYPAL_PROD_CLIENT_ID; ?>&currency=<?php echo $currency; ?>"></script>
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pogo.Ici c'est POGO.</title>
-    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.0.0/css/pro.min.css">
-    <link rel="stylesheet" href="./css/paypal.css?v=1">
-</head>
-
 <body>
     <script src="https://ww.paypal.com/sdk/js?client-id=Ac2Qlp2PmOKd4eicwlZ1VvwYBojOONCONEKoKJB9iNIj4AQH4KBFOvRr58ZPlsbsb2AW3oGMM5EtXoFf&currency=USD"></script>
     <section>
@@ -17,117 +14,102 @@
             <div class="overlay hidden"><div class="overlay-content"><img src="css/loading.gif" alt="Processing..."/></div></div>
 
             <div class="panel-heading">
-                <h3 class="panel-title">Charge <?php ?> with PayPal</h3>
-                
+                <h3 class="panel-title">Charge <?php echo '$'.$itemPrice; ?> with PayPal</h3>
+
                 <!-- Product Info -->
-                <p><b>Item Name:</b> <?php  ?></p>
-                <p><b>Price:</b> <?php  ?></p>
+                <p><b>Item Name:</b> <?php echo $itemName; ?></p>
+                <p><b>Price:</b> <?php echo '$'.$itemPrice.' '.$currency; ?></p>
             </div>
             <div class="panel-body">
                 <!-- Display status message -->
                 <div id="paymentResponse" class="hidden"></div>
-                
+
                 <!-- Set up a container element for the button -->
                 <div id="paypal-button-container"></div>
             </div>
         </div>
         <script>
             paypal.Buttons({
-                createOrder: (data,action) => {
-                    return action.order.create({
+                // Sets up the transaction when a payment button is clicked
+                createOrder: (data, actions) => {
+                    return actions.order.create({
                         "purchase_units": [{
-                            "custom_id":"<?php echo "12" ?>",
-                            "description":"<?php echo "testItemName" ?>",
+                            "custom_id": "<?php echo $itemNumber; ?>",
+                            "description": "<?php echo $itemName; ?>",
                             "amount": {
-                                "currency_code":"<?php  ?>",
-                                "value": "<?php  ?>",
+                                "currency_code": "<?php echo $currency; ?>",
+                                "value": <?php echo $itemPrice; ?>,
                                 "breakdown": {
                                     "item_total": {
-                                        "currency_code":"<?php ?>",
-                                        "value": "<?php ?>"
+                                        "currency_code": "<?php echo $currency; ?>",
+                                        "value": <?php echo $itemPrice; ?>
                                     }
                                 }
                             },
-                            "items":[
+                            "items": [
                                 {
-                                    "name": "<?php  ?>",
-                                    "description": "<?php  ?>",
-                                    "unit_amount":{
-                                        "currency_code":"<?php  ?>",
-                                        "value":"<?php  ?>"
+                                    "name": "<?php echo $itemName; ?>",
+                                    "description": "<?php echo $itemName; ?>",
+                                    "unit_amount": {
+                                        "currency_code": "<?php echo $currency; ?>",
+                                        "value": <?php echo $itemPrice; ?>
                                     },
-                                    "quantity": 1,
-                                    "category":"DIGITAL_GOODS"
-                                }
+                                    "quantity": "1",
+                                    "category": "DIGITAL_GOODS"
+                                },
                             ]
                         }]
-                    })
+                    });
                 },
-                onApprove: (date, action ) => {
-                    return action.order.capture().then(function(orderData){
+                // Finalize the transaction after payer approval
+                onApprove: (data, actions) => {
+                    return actions.order.capture().then(function(orderData) {
+                        setProcessing(true);
+                        var postData = {paypal_order_check: 1, order_id: orderData.id};
+                        fetch('paypal_checkout_validate.php', {
+                            method: 'POST',
+                            headers: {'Accept': 'application/json'},
+                            body: encodeFormData(postData)
+                        })
+                        .then((response) => response.json())
+                        .then((result) => {
+                            if(result.status == 1){
+                                window.location.href = "payment-status.php?checkout_ref_id="+result.ref_id;
+                            }else{
+                                const messageContainer = document.querySelector("#paymentResponse");
+                                messageContainer.classList.remove("hidden");
+                                messageContainer.textContent = result.msg;
 
+                                setTimeout(function () {
+                                    messageContainer.classList.add("hidden");
+                                    messageText.textContent = "";
+                                }, 5000);
+                            }
+                            setProcessing(false);
+                        })
+                        .catch(error => console.log(error));
                     });
                 }
-
             }).render('#paypal-button-container');
 
             const encodeFormData = (data) => {
                 var form_data = new FormData();
 
-                for(var key in data ){
-                    form_data.append(key,data[key]);
+                for ( var key in data ) {
+                    form_data.append(key, data[key]);
                 }
-                return form_data;
+                return form_data;   
             }
 
-
-          
+            // Show a loader on payment form processing
+            const setProcessing = (isProcessing) => {
+                if (isProcessing) {
+                    document.querySelector(".overlay").classList.remove("hidden");
+                } else {
+                    document.querySelector(".overlay").classList.add("hidden");
+                }
+            }    
         </script>
-
-        <!-- <div class="formulaire">
-
-            <form class="form" action="./back/check_paypal.php" method="POST">
-                <div class="menu-form">
-                    <h1>Paiement</h1>
-                </div>
-                <div class="input-form">
-                    <img src="./res/Paypal-logo.jpg" id="paypal">
-                    <p id="connecter">Connectez-vous à PayPal</p>
-                    <p>Saisissez votre adresse email ou numéro de mobile pour commencer.</p>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="mail_nb" placeholder="Email ou numéro de mobile">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Mot de pass">
-                    </div>
-                    <div class="form-group" id="pay-now">
-                        <button type="submit" class="confirm-purchase">Payer</button>
-                    </div>
-                    <div class="form-group" id="pay-now">
-                        <button type="submit" class="confirm-purchase" name="retourner"
-                            value="retourner">Retourer</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        </div> -->
-
     </section>
-    <?php
-    include('./reseaux.php');
-    ?>
-    <!--DEBUT FOOTER-->
-    <?php
-    include('./footer.php');
-    ?>
-    <script src="./JavaScript/index.js?v=1"></script>
-
-    <!--DEBUT FOOTER-->
 </body>
-
-</html>
-
-
-<header>
-    <img src="./res/Pogo3sansfond.png" alt="">
-</header>
+    <?php
