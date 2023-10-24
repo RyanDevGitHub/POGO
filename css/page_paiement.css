@@ -132,12 +132,15 @@ section{
     cursor: pointer;
 }
 .B{
-    height: 80%;
+    height: 100%;
     width: 80%;
     background-color:#ffffff;
     padding: 1rem;
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.42);
     
+}
+#title_payment{
+    padding: 5%;
 }
 .C{
     height: 80%;

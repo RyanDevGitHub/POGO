@@ -1,4 +1,4 @@
-<?php 
+<!-- <?php 
 // Include the configuration file  
 require_once './config/configPaypal.php'; 
 ?>
@@ -8,7 +8,7 @@ require_once './config/configPaypal.php';
 <!DOCTYPE html>
 <html lang="en">
 <body>
-    <script src="https://ww.paypal.com/sdk/js?client-id=Ac2Qlp2PmOKd4eicwlZ1VvwYBojOONCONEKoKJB9iNIj4AQH4KBFOvRr58ZPlsbsb2AW3oGMM5EtXoFf&currency=USD"></script>
+    <!-- <script src="https://ww.paypal.com/sdk/js?client-id=<?php echo PAYPAL_SANDBOX?PAYPAL_SANDBOX_CLIENT_ID:PAYPAL_PROD_CLIENT_ID; ?>&currency=USD"></script> -->
     <section>
         <div class="panel">
             <div class="overlay hidden"><div class="overlay-content"><img src="css/loading.gif" alt="Processing..."/></div></div>
@@ -38,11 +38,11 @@ require_once './config/configPaypal.php';
                             "description": "<?php echo $itemName; ?>",
                             "amount": {
                                 "currency_code": "<?php echo $currency; ?>",
-                                "value": <?php echo $itemPrice; ?>,
+                                "value": <?php echo $totalGene; ?>,
                                 "breakdown": {
                                     "item_total": {
                                         "currency_code": "<?php echo $currency; ?>",
-                                        "value": <?php echo $itemPrice; ?>
+                                        "value": <?php echo $totalGene; ?>
                                     }
                                 }
                             },
@@ -52,7 +52,7 @@ require_once './config/configPaypal.php';
                                     "description": "<?php echo $itemName; ?>",
                                     "unit_amount": {
                                         "currency_code": "<?php echo $currency; ?>",
-                                        "value": <?php echo $itemPrice; ?>
+                                        "value": <?php echo $totalGene; ?>
                                     },
                                     "quantity": "1",
                                     "category": "DIGITAL_GOODS"
@@ -112,4 +112,4 @@ require_once './config/configPaypal.php';
         </script>
     </section>
 </body>
-    <?php
+    <?php -->
