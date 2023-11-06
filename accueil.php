@@ -34,7 +34,7 @@ foreach($rowkeyword as $keyword){
     <!--HEADER-->
     <!--DEBUT SECTION SLIDER-->
     <section class="slider">
-        <div>
+        <div id="slider-container">
             <img class="slider" src="./res/slider1.jpeg" alt="">
             <img class="slider" src="./res/slider2.jpeg" alt="">
             <img class="slider" src="./res/slider3.jpeg" alt="">
