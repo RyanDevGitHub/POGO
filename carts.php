@@ -35,39 +35,47 @@ if (!$_SESSION['statue'])
 
                 if ($_SESSION['id']) {
                     $idUser = intval($_SESSION['id']);
-                    $data = $pdo->query("SELECT * FROM cart INNER JOIN productes ON cart.id_producte = productes.id_producte
-                    WHERE id_user = $idUser AND statue = 'in progrese';");
+                    $data = $pdo->prepare("SELECT * FROM cart 
+                    INNER JOIN productes ON cart.id_producte = productes.id_producte
+                    WHERE id_user = :id_user AND statue = 'in progrese'");
+                    $data->bindParam(':id_user', $idUser, PDO::PARAM_INT);
+                    $data->execute();
                     $piece = 0;
                     $total = 0;
                     $livraison = 0;
                     $totalGene = 0;
                     while ($row = $data->fetch()) {
-
                         $itemIsOk = true;
                         $piece += intval($row['quantity']);
                         $total += floatval($row['price_producte']) * intval($row['quantity']);
-                    }
                 ?>
-                    <div class="itemCart">
-                        <div class="imgProduct">
-                            <img height="150px" width="100px" src="./res/photo_product/<?php echo $row['image_producte']; ?>">
-                        </div>
-                        <div class="infosProduct">
-                            <p class="prixPro"><?php echo $row['price_producte']; ?> €</p>
-                            <p class="titlePro"><?php echo $row['title_producte']; ?></p>
-                            <p class="size"></p>
-                        </div>
-                        <div class="editCart">
-                            <form id="formQuantity" action="./back/edit_quantity.php?idPro=<?php echo $row['id_producte']; ?>" method="POST">
-                                <input id="inputQuant" type="number" name="quantity" value="<?php echo $row['quantity']; ?>" min=1>
-                                <button id="btnQuantity">Modifier</button>
-                            </form>
-                            <a class="linkCart" href="./back/delete_product_cart.php?idPro=<?php echo $row['id_producte']; ?>">Supprimer</a>
-                        </div>
-                    </div>
+                        <?php
+                        if ($row) : ?>
 
+                            <div class="itemCart">
+                                <div class="imgProduct">
+                                    <img height="150px" width="100px" src="./res/photo_product/<?php if ($row) echo $row['image_producte']; ?>">
+                                </div>
+                                <div class="infosProduct">
+                                    <p class="prixPro"><?php if ($row) echo $row['price_producte']; ?> €</p>
+                                    <p class="titlePro"><?php if ($row) echo $row['title_producte']; ?></p>
+                                    <p class="size"></p>
+                                </div>
+                                <div class="editCart">
+                                    <form id="formQuantity" action="./back/edit_quantity.php?idPro=<?php echo $row['id_producte']; ?>" method="POST">
+                                        <input id="inputQuant" type="number" name="quantity" value="<?php echo $row['quantity']; ?>" min=1>
+                                        <button id="btnQuantity">Modifier</button>
+                                    </form>
+                                    <a class="linkCart" href="./back/delete_product_cart.php?idPro=<?php echo $row['id_producte']; ?>">Supprimer</a>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                 <?php
+                    }
                 }
+                ?>
+                <?php
+
                 if ($total >= 50 || $total == 0) {
                     $totalGene = $total;
                 } else {
