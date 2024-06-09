@@ -35,18 +35,18 @@ if (!$_SESSION['statue'])
 
                 if ($_SESSION['id']) {
                     $idUser = intval($_SESSION['id']);
-                }
-                $data = $pdo->query("SELECT * FROM cart INNER JOIN productes ON cart.id_producte = productes.id_producte
-                WHERE id_user = $idUser AND statue = 'in progrese';");
-                $piece = 0;
-                $total = 0;
-                $livraison = 0;
-                $totalGene = 0;
-                while ($row = $data->fetch()) {
+                    $data = $pdo->query("SELECT * FROM cart INNER JOIN productes ON cart.id_producte = productes.id_producte
+                    WHERE id_user = $idUser AND statue = 'in progrese';");
+                    $piece = 0;
+                    $total = 0;
+                    $livraison = 0;
+                    $totalGene = 0;
+                    while ($row = $data->fetch()) {
 
-                    $itemIsOk = true;
-                    $piece += intval($row['quantity']);
-                    $total += floatval($row['price_producte']) * intval($row['quantity']);
+                        $itemIsOk = true;
+                        $piece += intval($row['quantity']);
+                        $total += floatval($row['price_producte']) * intval($row['quantity']);
+                    }
                 ?>
                     <div class="itemCart">
                         <div class="imgProduct">
