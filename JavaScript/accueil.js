@@ -1,44 +1,23 @@
-const items = document.querySelectorAll("img.slider");
-const nbSlide = items.length;
-const slider_section = document.querySelector(".slider");
+// Sélectionne toutes les images du slider
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
 
- //FOR SLIDER ONLY ACCUEIL
-
-let count = 0;
-
-function enleverActiveImage(){
-    for(let i =0;i<nbSlide;i++){
-        items[i].classList.remove('active');
+// Affiche l'image correspondant à l'index
+function showSlide(index) {
+  slides.forEach((img, i) => {
+    img.classList.remove("active");
+    if (i === index) {
+      img.classList.add("active");
     }
-}
-slider_section.style.backgroundImage ="url('./res/slider5.jpeg')";
-function slider(){
-    count++;
-    if(count >= nbSlide){
-        count = 0;
-    }
-    if(count === 0){
-        slider_section.style.backgroundImage ="url('./res/slider5.jpeg')";
-    }else{
-        slider_section.style.backgroundImage ="url('./res/slider"+count+".jpeg')";
-    }
-    
-    enleverActiveImage();
-    items[count].classList.add('active');
+  });
 }
 
-slider();
+// Passe à la slide suivante toutes les 6 secondes
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
 
-setInterval(slider , 6000);
-
-function update() {
-    $.get("accueil.js", function(data) {
-      $("#section-article column").html(data);
-    });
-  }
-
- 
-  
-
-
-
+// Initialise le slider
+showSlide(currentSlide);
+setInterval(nextSlide, 6000);

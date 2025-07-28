@@ -35,9 +35,9 @@ if (!$_SESSION['statue'])
 
                 if ($_SESSION['id']) {
                     $idUser = intval($_SESSION['id']);
-                }
-                $data = $pdo->query("SELECT * FROM cart INNER JOIN productes ON cart.id_producte = productes.id_producte
+                    $data = $pdo->query("SELECT * FROM cart INNER JOIN productes ON cart.id_producte = productes.id_producte
                 WHERE id_user = $idUser AND statue = 'in progrese';");
+                }
                 $piece = 0;
                 $total = 0;
                 $livraison = 0;
