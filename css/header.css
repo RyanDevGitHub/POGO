@@ -1,0 +1,98 @@
+/*  DEBUT HEADER */
+
+header .head {
+  max-width: 100%;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  background-color: #e1e1e1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /*border-top: 2rem solid #494949;*/
+}
+.logo-accueil {
+  text-align: center;
+}
+.head a {
+  outline: none;
+  text-decoration: none;
+  color: black;
+  width: 100%;
+}
+header img {
+  padding: 1rem 0rem;
+  width: 35%;
+  text-align: center;
+}
+header .icon i {
+  font-size: 30px;
+  text-align: center;
+}
+header .search {
+  display: flex;
+  flex-direction: row;
+}
+header .search input {
+  display: none;
+  padding-left: 10px;
+}
+
+#suggestions {
+  display: none;
+  padding-left: 10px;
+}
+
+#suggestions.active {
+  display: block;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  width: 17%;
+  border-radius: 10px;
+  text-align: left;
+}
+#suggestions div {
+  display: none;
+  padding-left: 10px;
+}
+#suggestions div.active {
+  display: block;
+  padding-left: 10px;
+}
+
+header .search button {
+  border: none;
+  background-color: rgb(0, 0, 0, 0);
+}
+header .search input.active {
+  height: 55%;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: none;
+  border-radius: 10px;
+}
+#suggestions div.active:hover {
+  cursor: pointer;
+}
+
+header .icon-search i {
+}
+header .icon-search i:hover {
+  border-bottom: solid 1px #282841;
+}
+header nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+nav ul li {
+  padding: 1.5rem 1rem;
+}
+nav ul li:hover {
+  border-bottom: solid 2px #282841;
+}
+/*  FIN HEADER */

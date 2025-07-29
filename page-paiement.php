@@ -1,6 +1,6 @@
-<?php 
+<?php
 // Include the configuration file  
-require_once '../config/configPaypal.php'; 
+require_once '../config/configPaypal.php';
 ?>
 
 <!--HEAD-->
@@ -14,18 +14,14 @@ require_once '../config/configPaypal.php';
     <title>Pogo.Ici c'est POGO.</title>
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.0.0/css/pro.min.css">
     <link rel="stylesheet" href="../css/page_paiement.css?v=1">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/base.css">
 </head>
 <!-- fin HEAD-->
 
 <body>
-    <!--HEADER-->
-    <header>
-        <div class="head">
-            <a href="../accueil.php" class="logo"><img src="../res/Pogo3sansfond.png" alt=""></a>
-            <h1>PAIEMENT</h1>
-        </div>
-    </header>
-    <!--HEADER-->
+    <?php include('../header.php'); ?>
     <!--DEBUT SECTION-->
     <section>
         <div class="container">
@@ -87,86 +83,89 @@ require_once '../config/configPaypal.php';
 
 </html>
 
-<script src="https://www.paypal.com/sdk/js?client-id=<?php echo PAYPAL_SANDBOX?PAYPAL_SANDBOX_CLIENT_ID:PAYPAL_PROD_CLIENT_ID; ?>&currency=<?php echo $currency; ?>"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=<?php echo PAYPAL_SANDBOX ? PAYPAL_SANDBOX_CLIENT_ID : PAYPAL_PROD_CLIENT_ID; ?>&currency=<?php echo $currency; ?>"></script>
 <script>
-            paypal.Buttons({
-                // Sets up the transaction when a payment button is clicked
-                createOrder: (data, actions) => {
-                    return actions.order.create({
-                        "purchase_units": [{
-                            "custom_id": "<?php echo $itemNumber; ?>",
-                            "description": "<?php echo $itemName; ?>",
-                            "amount": {
+    paypal.Buttons({
+        // Sets up the transaction when a payment button is clicked
+        createOrder: (data, actions) => {
+            return actions.order.create({
+                "purchase_units": [{
+                    "custom_id": "<?php echo $itemNumber; ?>",
+                    "description": "<?php echo $itemName; ?>",
+                    "amount": {
+                        "currency_code": "<?php echo $currency; ?>",
+                        "value": <?php echo $totalGene; ?>,
+                        "breakdown": {
+                            "item_total": {
                                 "currency_code": "<?php echo $currency; ?>",
-                                "value": <?php echo $totalGene; ?>,
-                                "breakdown": {
-                                    "item_total": {
-                                        "currency_code": "<?php echo $currency; ?>",
-                                        "value": <?php echo $totalGene; ?>
-                                    }
-                                }
-                            },
-                            "items": [
-                                {
-                                    "name": "<?php echo $itemName; ?>",
-                                    "description": "<?php echo $itemName; ?>",
-                                    "unit_amount": {
-                                        "currency_code": "<?php echo $currency; ?>",
-                                        "value": <?php echo $totalGene; ?>
-                                    },
-                                    "quantity": "1",
-                                    "category": "DIGITAL_GOODS"
-                                },
-                            ]
-                        }]
-                    });
-                },
-                // Finalize the transaction after payer approval
-                onApprove: (data, actions) => {
-                    return actions.order.capture().then(function(orderData) {
-                        setProcessing(true);
-                        var postData = {paypal_order_check: 1, order_id: orderData.id};
-                        fetch('paypal_checkout_validate.php', {
-                            method: 'POST',
-                            headers: {'Accept': 'application/json'},
-                            body: encodeFormData(postData)
-                        })
-                        .then((response) => response.json())
-                        .then((result) => {
-                            if(result.status == 1){
-                                window.location.href = "payment-status.php?checkout_ref_id="+result.ref_id;
-                            }else{
-                                const messageContainer = document.querySelector("#paymentResponse");
-                                messageContainer.classList.remove("hidden");
-                                messageContainer.textContent = result.msg;
-
-                                setTimeout(function () {
-                                    messageContainer.classList.add("hidden");
-                                    messageText.textContent = "";
-                                }, 5000);
+                                "value": <?php echo $totalGene; ?>
                             }
-                            setProcessing(false);
-                        })
-                        .catch(error => console.log(error));
-                    });
-                }
-            }).render('#paypal-button-container');
+                        }
+                    },
+                    "items": [{
+                        "name": "<?php echo $itemName; ?>",
+                        "description": "<?php echo $itemName; ?>",
+                        "unit_amount": {
+                            "currency_code": "<?php echo $currency; ?>",
+                            "value": <?php echo $totalGene; ?>
+                        },
+                        "quantity": "1",
+                        "category": "DIGITAL_GOODS"
+                    }, ]
+                }]
+            });
+        },
+        // Finalize the transaction after payer approval
+        onApprove: (data, actions) => {
+            return actions.order.capture().then(function(orderData) {
+                setProcessing(true);
+                var postData = {
+                    paypal_order_check: 1,
+                    order_id: orderData.id
+                };
+                fetch('paypal_checkout_validate.php', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        body: encodeFormData(postData)
+                    })
+                    .then((response) => response.json())
+                    .then((result) => {
+                        if (result.status == 1) {
+                            window.location.href = "payment-status.php?checkout_ref_id=" + result.ref_id;
+                        } else {
+                            const messageContainer = document.querySelector("#paymentResponse");
+                            messageContainer.classList.remove("hidden");
+                            messageContainer.textContent = result.msg;
 
-            const encodeFormData = (data) => {
-                var form_data = new FormData();
+                            setTimeout(function() {
+                                messageContainer.classList.add("hidden");
+                                messageText.textContent = "";
+                            }, 5000);
+                        }
+                        setProcessing(false);
+                    })
+                    .catch(error => console.log(error));
+            });
+        }
+    }).render('#paypal-button-container');
 
-                for ( var key in data ) {
-                    form_data.append(key, data[key]);
-                }
-                return form_data;   
-            }
+    const encodeFormData = (data) => {
+        var form_data = new FormData();
 
-            // Show a loader on payment form processing
-            const setProcessing = (isProcessing) => {
-                if (isProcessing) {
-                    document.querySelector(".overlay").classList.remove("hidden");
-                } else {
-                    document.querySelector(".overlay").classList.add("hidden");
-                }
-            }    
-        </script>
+        for (var key in data) {
+            form_data.append(key, data[key]);
+        }
+        return form_data;
+    }
+
+    // Show a loader on payment form processing
+    const setProcessing = (isProcessing) => {
+        if (isProcessing) {
+            document.querySelector(".overlay").classList.remove("hidden");
+        } else {
+            document.querySelector(".overlay").classList.add("hidden");
+        }
+    }
+</script>

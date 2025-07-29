@@ -1,222 +1,112 @@
-/*  DEBUT GENERALE */
-*{
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    font-family: FontAwesome;
-}
-a{
-    outline: none;
-    text-decoration:none;
-    color: black;
-}
-body{
-   
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.5fr 5fr auto ;
-}
-li{
-    list-style: none;
-}
-/*  FIN GENERALE */
-
-/*  DEBUT HEADER */
-header{
-    background-color: #e1e1e1;
-}
-header .head{
-    grid-column-start: 1;
-    grid-column-end:2 ;
-    grid-row-start: 1;
-    grid-row-end: 1;
-    background-color: #e1e1e1;
-}
-.head a{
-    outline: none;
-    text-decoration: none;
-    color: black;
-}
-header img {
-    padding: 1rem 0rem;
-    text-align: center;
-    width: 150px;
-    margin-left: 40px;
-}
-header .head{
-    display: flex;
-    flex-direction: row;
-}
-header .head h1{
-    font-size: 30px;
-    padding: 1rem 0rem 1rem 30%; 
-}
-/*  FIN HEADER */
-
-section{
-    grid-column: 1;
-    grid-row-start: 2;
-    grid-row-end:3 ;
-    background-color: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;   
+section {
+  grid-column: 1;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 /* SECTION PAIEMENT */
-.container{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-   
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
 }
-.column{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    height: 80%;
-    margin: 1rem 2rem;
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 80%;
+  margin: 1rem 2rem;
 }
-.A{
-    height: 70%;
-    width: 80%;
-    background-color:#ffffff;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.42);
-    
+.A {
+  height: 70%;
+  width: 80%;
+  background-color: #ffffff;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
 }
-.info-livraison{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.info-livraison {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.info-livraison .title{
-    margin-bottom: 0.7rem;
+.info-livraison .title {
+  margin-bottom: 0.7rem;
 }
-.form-mode-de-paiement{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+.form-mode-de-paiement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
-.form-mode-de-paiement input[type=submit]{
-    width: 250px;
-    font-size: 13px;
-    border: 1px solid grey;
-    background-color: #282841;
-    cursor: pointer;
-    color: #ffffff;
-    padding: 0.5rem;
-    margin: 2px;
+.form-mode-de-paiement input[type="submit"] {
+  width: 250px;
+  font-size: 13px;
+  border: 1px solid grey;
+  background-color: #282841;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 0.5rem;
+  margin: 2px;
 }
 
-.form-mode-de-paiement input[type=submit]:disabled{
-    background-color: #dfdfdf;
-    color: grey;
-    border-color: grey;
-    cursor: no-drop;
+.form-mode-de-paiement input[type="submit"]:disabled {
+  background-color: #dfdfdf;
+  color: grey;
+  border-color: grey;
+  cursor: no-drop;
 }
-.form-mode-de-paiement input[type=submit]:disabled:hover{
-    background-color: #dfdfdf;
-    color: grey;
-    border-color: grey;
-    cursor: no-drop;
+.form-mode-de-paiement input[type="submit"]:disabled:hover {
+  background-color: #dfdfdf;
+  color: grey;
+  border-color: grey;
+  cursor: no-drop;
 }
-.form-mode-de-paiement input[type=submit]:hover{
-    background-color: #dfdfdf;
-    color: black;
-    border-color: black;
-    cursor: pointer;
+.form-mode-de-paiement input[type="submit"]:hover {
+  background-color: #dfdfdf;
+  color: black;
+  border-color: black;
+  cursor: pointer;
 }
-.B{
-    height: 100%;
-    width: 80%;
-    background-color:#ffffff;
-    padding: 1rem;
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.42);
-    
+.B {
+  height: 100%;
+  width: 80%;
+  background-color: #ffffff;
+  padding: 1rem;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
 }
-#title_payment{
-    padding: 5%;
+#title_payment {
+  padding: 5%;
 }
-.C{
-    height: 80%;
-    width: 80%;
-    background-color:#ffffff;
-    margin: 1rem 2rem;
-    padding: 1rem;
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.42);
+.C {
+  height: 80%;
+  width: 80%;
+  background-color: #ffffff;
+  margin: 1rem 2rem;
+  padding: 1rem;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
 }
-.article-row{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: solid 1px black;
-
+.article-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: solid 1px black;
 }
-.C p{
-    font-size: 15px;
+.C p {
+  font-size: 15px;
 }
-.C h2.rc{
-    margin-bottom:0.5rem ;
-
+.C h2.rc {
+  margin-bottom: 0.5rem;
 }
-.C h2.pt{
-    border-top:solid 1px black ;
-    margin-bottom: 0.5rem;
+.C h2.pt {
+  border-top: solid 1px black;
+  margin-bottom: 0.5rem;
 }
-p.title{
-    
+p.title {
 }
 /* FIN SECTION PAIEMENT*/
-
-/* SECTION RESEAU */
-
-.reseau{
-    background-color: #e1e1e1;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-.reseau p{
- padding: 2rem 0rem;
- margin-right: 2rem ;
-}
-.reseau .logo-reseau{
-    padding: 2rem 0rem;
-    margin-right: 10px;
-}
-/* FIN SECTION RESEAU */
-
-/*  DEBUT FOOTER */
-footer{
-    grid-row:4;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-}
-footer .info-title{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding: 2rem 0rem 1rem 0rem;
-}
-footer .info{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-footer .info .info-assistance,.info-partenariats,.info-propo{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-.CGU p {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 20px;
-}
-/*  FIN FOOTER */

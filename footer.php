@@ -23,8 +23,8 @@
            </div>
        </div>
        <div class="CGU">
-           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque aliquam amet mollitia, voluptas
-               cumque quas? </p>
+           <p>&copy; 2025 Tous droits réservés.</p>
+           <p>Made with ❤️ by HADDAD RYAN</p>
        </div>
    </footer>
    <!--DEBUT FOOTER-->

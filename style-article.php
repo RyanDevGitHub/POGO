@@ -13,6 +13,9 @@ include_once("./database/db.php");
     <title>Pogo.They is POGO.</title>
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.0.0/css/pro.min.css">
     <link rel="stylesheet" href="./css/page-article.css?v=2">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/base.css">
 </head>
 
 <?php
@@ -79,13 +82,12 @@ include("./HeaderNav.php");
         ?>
                 <a href="./page-article-zoom.php?id_product=<?php echo $rowPro['id_producte']; ?>">
                     <div class="article">
-                        <img class=img_article src="./res/photo_product/<?php echo $rowPro['image_producte']; ?>" alt="">
+                        <img class=img-article src="./res/photo_product/<?php echo $rowPro['image_producte']; ?>" alt="">
                         <p class="title_article"><?php echo $rowPro['title_producte']; ?></p>
                         <p class="prix_article"><?php echo $rowPro['price_producte']; ?> €</p>
                         <div class="note-stock">
-                            <img class="note_article" src="./res/note_producte/<?php print($row[0]); ?> STARS.png" alt="">
+                            <img class="note_article" src="./res/note_producte/<?php print($row[0]); ?>STARS.png" alt="">
                             <p class="stock_article"><?php if (intval($rowPro['quantity_producte'] > 0)) {
-                                                            echo $rowPro['quantity_producte'];
                                                         } else {
                                                             echo "épuisé";
                                                         }

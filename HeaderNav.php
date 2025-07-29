@@ -52,17 +52,16 @@ $namePage = explode(".php", $arr[array_key_last($arr)])[0];
         </ul>
     </nav>
     <script>
-        var keywords = <?php echo json_encode($_SESSION["keyswords"]); ?>; 
+        var keywords = <?php echo json_encode($_SESSION["keyswords"]); ?>;
         console.log(keywords);
         // const search_text = document.querySelector(".text-search");
         // const suggestion_container = document.getElementById("suggestions");
         // const button_search = document.querySelector(".search-button");
-        
+
         // button_search.addEventListener("click", () => {
         //     search_text.classList.toggle("active");
         //     suggestion_container.classList.toggle("active");
         // });
-
     </script>
     <script src="./JavaScript/auto-complete.js"> </script>
 </header>

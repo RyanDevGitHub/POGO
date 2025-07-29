@@ -15,6 +15,9 @@ if (!$_SESSION['statue'])
     <title>Pogo.Ici c'est POGO.</title>
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.0.0/css/pro.min.css">
     <link rel="stylesheet" href="./css/carts.css?v=2">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/base.css">
 </head>
 <!-- fin HEAD-->
 

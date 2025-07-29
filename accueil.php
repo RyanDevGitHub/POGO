@@ -22,7 +22,11 @@ foreach ($rowkeyword as $keyword) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pogo.Ici c'est POGO.</title>
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.0.0/css/pro.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/accueil.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/base.css">
 </head>
 <!-- fin HEAD-->
 
@@ -42,7 +46,7 @@ foreach ($rowkeyword as $keyword) {
     </section>
     <!-- FIN SECTION SLIDER -->
     <!--DEBUT SECTION-->
-    <section class="News">
+    <section class="news">
         <h2 id='title'>Nos Nouveautés</h2>
         <div class="section-article column">
             <?php
@@ -68,7 +72,6 @@ foreach ($rowkeyword as $keyword) {
                                                                                             print($row[0]);
                                                                                         } ?>STARS.png" alt="">
                                 <p class="stock_article"><?php if (intval($rowPro[$i]['quantity_producte'] > 0)) {
-                                                                echo $rowPro[$i]['quantity_producte'];
                                                             } else {
                                                                 echo "épuisé";
                                                             }

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!$_SESSION['statue'])
-  header("Location: ./index.php");
+    header("Location: ./index.php");
 ?>
 
 <head>
@@ -11,6 +11,9 @@ if (!$_SESSION['statue'])
     <title>Pogo.They is POGO.</title>
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.0.0/css/pro.min.css">
     <link rel="stylesheet" href="./css/page-article.css?v=1">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/base.css">
 </head>
 
 <?php
@@ -27,18 +30,18 @@ $dataBrands = $pdo->query("SELECT * FROM brands ORDER BY title_brand ASC");
         </div>
         <ul class="brandBlock">
             <?php
-    while ($rowBrand = $dataBrands->fetch()) {
-    ?>
-            <li class="brand">
-                <a href="./page-article.php?brand=<?php echo $rowBrand['id_brand']; ?>">
-                    <span class="title_brand"><?php echo $rowBrand['title_brand']; ?></span>
-                </a>
+            while ($rowBrand = $dataBrands->fetch()) {
+            ?>
+                <li class="brand">
+                    <a href="./page-article.php?brand=<?php echo $rowBrand['id_brand']; ?>">
+                        <span class="title_brand"><?php echo $rowBrand['title_brand']; ?></span>
+                    </a>
 
-            </li>
+                </li>
 
             <?php
-    }
-    ?>
+            }
+            ?>
         </ul>
 
     </div>
@@ -51,9 +54,9 @@ include("./reseaux.php");
 include("./footer.php");
 ?>
 <script>
-function myFunction(value) {
-    document.getElementById("haha").value = value;
-    document.getElementById("hihi").submit();
-}
+    function myFunction(value) {
+        document.getElementById("haha").value = value;
+        document.getElementById("hihi").submit();
+    }
 </script>
 <script src="./JavaScript/accueil.js"></script>

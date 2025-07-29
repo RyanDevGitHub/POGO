@@ -9,6 +9,8 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.0.0/css/pro.min.css">
     <link rel="stylesheet" href="./css/favoris.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
@@ -43,10 +45,12 @@ session_start();
                 <div class="article">
                     <img class=img_article src="./res/photo_product/<?php echo $rowPro['image_producte']; ?>" alt="">
                     <p class="title_article"><?php echo $rowPro['title_producte']; ?></p>
+                    <p class="description-article"><?php echo $rowPro['desc_producte'] ?></p>
                     <p class="prix_article"><?php echo $rowPro['price_producte']; ?> €</p>
+
                     <div class="note-stock">
-                        <img class="note_article" src="./res/note_producte/<?php print($row[0]) ?> STARS.png " alt="">
-                        <p class="stock_article"><?php echo $rowPro['quantity_producte']; ?></p>
+                        <img class="note_article" src="./res/note_producte/<?php print($row[0]) ?>STARS.png " alt="">
+                        <p class="stock_article"><?php  ?></p>
                     </div>
                     <?php //var_dump($rowPro); 
                     ?>

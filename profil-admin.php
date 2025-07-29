@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="./css/profil-admin.css?v=2">
     <link rel="stylesheet" href="./css/product.css?v1">
     <link rel="stylesheet" href="./css/add_product.css?v=3">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/base.css">
 </head>
 <!-- fin HEAD-->
 <?php

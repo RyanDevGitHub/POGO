@@ -23,6 +23,10 @@ if (isset($_SESSION["avis"]) && $_SESSION["avis"] === "fail") {
     <title>Pogo.Ici c'est POGO.</title>
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.0.0/css/pro.min.css">
     <link rel="stylesheet" href="./css/page-article-zoom.css?v=2">
+    <link rel="stylesheet" href="./css/footer.css?v=2">
+    <link rel="stylesheet" href="./css/header.css?v=2">
+    <link rel="stylesheet" href="./css/base.css?v=2">
+
 </head>
 <!-- fin HEAD-->
 
@@ -59,7 +63,7 @@ WHERE product_id = :product_id");
                 <form class="form-addToCart" action="./back/add_cart.php?idProduct=<?php echo $idProduct; ?>" method="POST">
                     <select name="" id="taille">
                         <option value="none" selected disabled hidden>Taille</option>
-                        <option value="">s</option>
+                        <option value="">S</option>
                         <option value="">L</option>
                         <option value="">XL</option>
                     </select>
@@ -305,4 +309,4 @@ include("./reseaux.php");
 <?php
 include("./footer.php");
 ?>
-<script src="./JavaScript/page_article_zoom.js"></script>r
+<script src="./JavaScript/page_article_zoom.js"></script>

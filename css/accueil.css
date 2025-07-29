@@ -1,137 +1,3 @@
-/* GÉNÉRAL */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-img,
-video {
-  max-width: 100%;
-  height: auto;
-}
-/* DEBUT GENERALE */
-* {
-  margin: 0;
-  padding: 0;
-  font-family: FontAwesome;
-}
-a {
-  outline: none;
-  text-decoration: none;
-  color: black;
-}
-body {
-  background-color: #f4f4f4;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto auto;
-}
-li {
-  list-style: none;
-}
-/* FIN GENERALE */
-
-/*  DEBUT HEADER */
-
-header .head {
-  max-width: 100%;
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 1;
-  grid-row-end: 1;
-  background-color: #e1e1e1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /*border-top: 2rem solid #494949;*/
-}
-.logo-accueil {
-  text-align: center;
-}
-.head a {
-  outline: none;
-  text-decoration: none;
-  color: black;
-  width: 100%;
-}
-header img {
-  padding: 1rem 0rem;
-  width: 35%;
-  text-align: center;
-}
-header .icon i {
-  padding: 1rem 2rem;
-  font-size: 30px;
-  text-align: center;
-}
-header .search {
-  display: flex;
-  flex-direction: row;
-}
-header .search input {
-  display: none;
-  padding-left: 10px;
-}
-
-#suggestions {
-  display: none;
-  padding-left: 10px;
-}
-
-#suggestions.active {
-  display: block;
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  width: 17%;
-  border-radius: 10px;
-  text-align: left;
-}
-#suggestions div {
-  display: none;
-  padding-left: 10px;
-}
-#suggestions div.active {
-  display: block;
-  padding-left: 10px;
-}
-
-header .search button {
-  border: none;
-  background-color: rgb(0, 0, 0, 0);
-}
-header .search input.active {
-  height: 55%;
-  display: block;
-  margin-top: auto;
-  margin-bottom: auto;
-  border: none;
-  border-radius: 10px;
-}
-#suggestions div.active:hover {
-  cursor: pointer;
-}
-
-header .icon-search i {
-  padding: 1rem 0.5rem;
-}
-header .icon-search i:hover {
-  border-bottom: solid 1px #282841;
-}
-header nav ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-nav ul li {
-  padding: 1.5rem 1rem;
-}
-nav ul li:hover {
-  border-bottom: solid 2px #282841;
-}
-/*  FIN HEADER */
-
 /* SLIDER */
 .slider {
   position: relative;
@@ -158,7 +24,9 @@ nav ul li:hover {
 }
 
 /* ARTICLES */
-
+.news {
+  background-color: #ffffff;
+}
 #title {
   display: flex;
   flex-direction: row;
@@ -182,104 +50,20 @@ nav ul li:hover {
 .item {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
   margin: auto;
   width: 100%;
   max-width: 300px;
 }
 
 .img-follow {
-  height: 25dvh;
+  width: 100%;
+  aspect-ratio: 4 / 5;
 }
 
 .star {
-  width: 13vw; /* largeur responsive = 2% largeur écran */
+  width: 8vw; /* largeur responsive = 2% largeur écran */
   min-width: 16px; /* limite minimale pour ne pas trop rétrécir */
   max-width: 150px; /* limite maximale */
   height: auto; /* conserve le ratio */
   object-fit: contain;
-}
-/* SECTION RESEAU */
-.reseau {
-  grid-row: 3;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-.reseau p {
-  padding: 2rem 0rem;
-  margin-right: 2rem;
-}
-.reseau .logo-reseau {
-  padding: 2rem 0rem;
-  margin-right: 10px;
-}
-/* FIN SECTION RESEAU */
-
-/* DEBUT FOOTER */
-footer {
-  grid-row: 4;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-}
-footer .info-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding: 2rem 0rem 1rem 0rem;
-}
-footer .info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-footer .info .info-assistance,
-.info-partenariats,
-.info-propo {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-.CGU p {
-  text-align: center;
-  margin-top: 2rem;
-  font-size: 20px;
-}
-/* FIN FOOTER */
-
-/* RESPONSIVE — Mobile */
-@media screen and (max-width: 768px) {
-  body {
-    font-size: 16px;
-  }
-
-  header img {
-    width: 50%;
-  }
-
-  .section-article.column {
-    grid-template-columns: 1fr;
-  }
-
-  .item {
-    width: 90%;
-    margin: 1rem auto;
-  }
-
-  #suggestions {
-    width: 90%;
-  }
-
-  header .search {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  footer .info-title,
-  footer .info {
-    flex-direction: column;
-    align-items: center;
-  }
 }
