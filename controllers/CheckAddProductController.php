@@ -133,13 +133,21 @@ if (!empty($_POST)) {
             $messagePhoto = "<font style='font-size:70%;' color = red>*La size de photo est trop grande</font><br>";
         } else {
             $photo = $_FILES['fileToUpload']['name'];
-            //add photo to server PC
             $file = $_FILES['fileToUpload']['tmp_name'];
-            $path = "<?php echo asset('assets/imgs/img-products/') ?>" . $_FILES['fileToUpload']['name'];
+
+            // Chemin absolu sur le serveur pour le stockage
+            $uploadDir = __DIR__ . '/../assets/imgs/img-products/';
+            $path = $uploadDir . basename($photo);
+
+            // Vérifie que le dossier existe
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true); // Crée le dossier si inexistant
+            }
+
             if (move_uploaded_file($file, $path)) {
                 $isPhoto = true;
             } else {
-                $messagePhoto = "<font style='font-size:70%;' color = red>*Erreur de téléchargerment</font><br>";
+                $messagePhoto = "<font style='font-size:70%;' color='red'>*Erreur de téléchargement</font><br>";
             }
         }
     }
