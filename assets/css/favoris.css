@@ -1,0 +1,119 @@
+/*  DEBUT GENERALE */
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-family: FontAwesome;
+}
+a {
+  outline: none;
+  text-decoration: none;
+  color: black;
+}
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto auto;
+}
+li {
+  list-style: none;
+}
+/*  FIN GENERALE */
+
+/* SECTION FAVORIS */
+/* 
+
+section{
+    grid-column: 1;
+    grid-row: 2;
+    background-color: #ffffff;
+    margin: 2% 10%;
+    display: grid;
+    grid-template-columns: minmax(100px, 25%) minmax(100px,  25%) minmax(100px,  25%) minmax(100px,  25%);  
+    grid-template-rows:  minmax(500px, 25%) minmax(500px, 25%) minmax(500px, 25%) minmax(500px, 25%);
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.42);
+}
+ section a{
+    margin: 1rem;
+}  */
+
+section {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    minmax(200px, 1fr)
+  ); /* Remplir automatiquement en fonction de la largeur */
+  grid-auto-rows: auto;
+  margin: 2% 10%;
+  grid-gap: 20px; /* Espacement entre les articles */
+  justify-content: space-evenly; /* Espace équilibré horizontalement */
+  align-content: space-evenly; /* Espace équilibré verticalement */
+}
+
+/* section a:nth-child(5n+1) {
+    grid-column: 1; 
+  } */
+
+section a div.article {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styles pour toutes les images à l'intérieur de div.article */
+section a > div.article img.img_article {
+  max-width: 218.86px; /* Redimensionne l'image pour qu'elle s'adapte à la largeur du conteneur */
+  max-height: 291.31px; /* Redimensionne l'image pour qu'elle ait une hauteur maximale de 300px */
+  margin: 0 auto;
+}
+
+/* section a > div.article img {
+    max-width: 100%; 
+    max-height: 100%;
+    height: auto; 
+} */
+
+section a > div.article p {
+  margin: 0; /* Supprime les marges par défaut des paragraphes */
+  flex-grow: 1; /* Les paragraphes occupent l'espace disponible */
+}
+
+section a > div.article .note-stock p {
+  text-align: left;
+}
+
+section a > div.article button {
+  max-width: 100%;
+  max-height: 100%; /* Limite la largeur du bouton à 100% de la cellule du grid */
+  margin: 0 auto;
+  /* Ajoutez d'autres styles personnalisés pour le bouton si nécessaire */
+}
+.description-article {
+  font-size: 14px;
+  color: #666;
+  margin: 0.5rem 0;
+}
+.verify {
+  padding: 8px;
+  color: white;
+  background-color: #282841;
+  border: 1px solid grey;
+  border-radius: 8px;
+  margin: 8px;
+  cursor: pointer;
+}
+section a div.article .note-stock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+section a div.article .note-stock img {
+  width: 8vw; /* largeur responsive = 2% largeur écran */
+  min-width: 16px; /* limite minimale pour ne pas trop rétrécir */
+  max-width: 150px; /* limite maximale */
+  height: auto; /* conserve le ratio */
+  object-fit: contain;
+}

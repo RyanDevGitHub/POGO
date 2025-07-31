@@ -1,0 +1,45 @@
+/* SECTION FAVORIS */
+
+section {
+  background-color: #ffffff;
+  margin: 2% 10%;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+#titleRes {
+  text-align: center;
+  padding: 15px;
+  font-size: 22px;
+}
+.contentPro {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns:
+    minmax(100px, 25%) minmax(100px, 25%) minmax(100px, 25%)
+    minmax(100px, 25%);
+  grid-template-rows: minmax(100px, 25%) minmax(100px, 25%) minmax(100px, 25%) minmax(
+      100px,
+      25%
+    );
+}
+section a {
+  margin: 1rem;
+}
+section a div.article {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+section a div.article .note-stock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+section a div.article .note-stock img {
+  max-width: 100%;
+  width: 50%;
+}

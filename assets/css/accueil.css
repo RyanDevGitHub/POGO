@@ -1,0 +1,69 @@
+/* SLIDER */
+.slider {
+  position: relative;
+  width: 100dvw;
+  height: 50dvh;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* ARTICLES */
+.news {
+  background-color: #ffffff;
+}
+#title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: FontAwesome;
+  align-items: center;
+  padding: 2rem 0rem;
+}
+.section-article.column {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  max-width: 100%;
+  gap: 1rem;
+}
+
+@media (min-width: 1300px) {
+  .section-article.column {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+  max-width: 300px;
+}
+
+.img-follow {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+}
+
+.star {
+  width: 8vw; /* largeur responsive = 2% largeur écran */
+  min-width: 16px; /* limite minimale pour ne pas trop rétrécir */
+  max-width: 150px; /* limite maximale */
+  height: auto; /* conserve le ratio */
+  object-fit: contain;
+}
