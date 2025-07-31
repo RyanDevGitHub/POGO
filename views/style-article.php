@@ -69,7 +69,7 @@ include(include_path('includes/headerNav.php'));
     <div class="article_container">
         <?php
         if (!empty($styleUser) && isset($isStyle)) {
-            echo "<div>Ce style ne vous plait plus ? <a id= 'linkModify' href ='" . asset('views/quiz.php') . "'><h2 id = 'linkModifyStyle'>Changer votre style </h2></a></div>";
+            echo "<div> <h2>Ce style ne vous plait plus ?</h2> <a id='linkModify' href ='" . asset('views/quiz.php') . "'><h2 id='linkModifyStyle'>Changer votre style </h2></a></div>";
             $data = $pdo->query("SELECT * FROM productes P LEFT JOIN styles_productes SP ON P.id_producte = SP.producte_id
         LEFT JOIN users U ON U.style = SP.style_id WHERE SP.style_id = $isStyle;");
 
@@ -96,12 +96,12 @@ include(include_path('includes/headerNav.php'));
                         </div>
                     </div>
                 </a>
-                <a href="<?php
-                        }
-                    } else {
-                        echo route('views/page-quiz.php');
-                    }
-                            ?>" id='linkModifyStyle'>
+                <a id='linkModifyStyle' href="<?php
+                                            }
+                                        } else {
+                                            echo route('views/page-quiz.php') . '">';
+                                        }
+                                                ?>
                     <h2>Selectioner le Style qui vous correspond le mieux !</h2>
                 </a>
 

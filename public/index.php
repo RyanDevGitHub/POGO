@@ -1,6 +1,6 @@
 <?php
 // public/index.php
-require_once __DIR__ . '../controllers/include/function.php';
+require_once __DIR__ . '/controllers/include/function.php';;
 // Sécurité basique : éviter l'injection dans l'URL
 $page = htmlspecialchars($_GET['page'] ?? 'accueil');
 

@@ -62,7 +62,7 @@
             <button id="addKeyWord" class="addBtn" type="button">Ajouter la clé pour produit</button>
         </div>
         <div id="listKey"></div>
-        script src="<?php echo asset('assets/js/add_product.js?v=3') ?>"></script>
+        <script src="<?php echo asset('assets/js/add_product.js?v=3') ?>"></script>
     </div>
 
     <div class="right">

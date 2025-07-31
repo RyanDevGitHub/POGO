@@ -1,3 +1,9 @@
+<script>
+    function myFunction(value) {
+        document.getElementById("haha").value = value;
+        document.getElementById("hihi").submit();
+    }
+</script>
 <section>
     <div class="profil-section">
         <div class="navigation">
@@ -98,9 +104,3 @@
                     } : ''
                 ));
                 ?>"></script>
-<script>
-    function myFunction(value) {
-        document.getElementById("haha").value = value;
-        document.getElementById("hihi").submit();
-    }
-</script>
