@@ -23,7 +23,11 @@
                     <p>Je comfirme d'être âgé.e d'au moins 18 ans</p>
                 </div>
                 <input type="submit" value="S'inscrire">
+
             </div>
         </form>
+        <a href="<?php echo route('controllers/AuthController.php') . '?guest=true'; ?>" class="btn-guest-access">
+            👀 Accéder en tant qu'invité
+        </a>
     </div>
 </section>

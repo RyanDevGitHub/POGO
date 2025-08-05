@@ -1,15 +1,20 @@
 <?php
 require_once dirname(__DIR__) . '/controllers/include/function.php';
-session_start();
-if (!$_SESSION['statue'])
-    redirect("index.php");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-$_SESSION['keyswords'] = [];
-include_once(include_path('database/db.php'));
-$data = $pdo->query("SELECT * FROM keyswords");
-$rowkeyword = $data->fetchAll();
-foreach ($rowkeyword as $keyword) {
-    array_push($_SESSION['keyswords'], $keyword[1]);
+if ($_SESSION['statue'] !== 'admin' && $_SESSION['statue'] !== 'guest' && $_SESSION['statue'] !== 'client') {
+    redirect("index.php");
+} else {
+
+    $_SESSION['keyswords'] = [];
+    include_once(include_path('database/db.php'));
+    $data = $pdo->query("SELECT * FROM keyswords");
+    $rowkeyword = $data->fetchAll();
+    foreach ($rowkeyword as $keyword) {
+        array_push($_SESSION['keyswords'], $keyword[1]);
+    }
 }
 ?>
 
@@ -35,6 +40,7 @@ foreach ($rowkeyword as $keyword) {
 <body>
     <!--HEADER-->
     <?php
+
     include(include_path('includes/headerNav.php'));
     ?>
     <!--HEADER-->

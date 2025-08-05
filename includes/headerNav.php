@@ -5,6 +5,23 @@ $arr = explode("/", $url);
 $namePage = explode(".php", $arr[array_key_last($arr)])[0];
 ?>
 <header>
+    <?php if (isset($_SESSION['statue']) && $_SESSION['statue'] === 'guest'): ?>
+        <div style="
+        background-color: #ffe8e8;
+        color: #b30000;
+        border: 1px solid #ffb3b3;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: 500;
+        margin: 20px 0;
+        text-align: center;
+    ">
+            🛑 Pour créer une commande, vous devez avoir un compte.
+            <a href="<?php echo route('index.php?action=login.php') ?>" style="color: #b30000; text-decoration: underline; font-weight: bold;">
+                Connectez-vous
+            </a>
+        </div>
+    <?php endif; ?>
     <div class="head">
         <div class="icon">
             <div class="search">
@@ -19,14 +36,34 @@ $namePage = explode(".php", $arr[array_key_last($arr)])[0];
             <a href="<?php echo asset('views/accueil.php') ?>" class="logo"><img id="logo_pogo" src="<?php echo asset('assets/imgs/icons/Pogo3sansfond.png') ?>" alt=""></a>
         </div>
         <div class="icon-search">
-            <a <?php if ($_SESSION['statue'] === 'client') {
-                    print('href="' . asset('views/profil.php?modify') . '">');
-                } else if ($_SESSION['statue'] === 'admin') {
-                    print('href="' . asset('views/profil-admin.php') . '">');
-                } ?> <i class="fa-light fa-user"></i></a>
-            <a href="<?php echo route('views/favoris.php') ?>"> <i class="fa-light fa-heart"></i></a>
-            <a href="<?php echo route('views/carts.php') ?>"><i class="fa-light fa-cart-shopping"></i></a>
+            <?php
+            $isGuest = isset($_SESSION['statue']) && $_SESSION['statue'] === 'guest';
+            $linkStyle = $isGuest ? 'pointer-events: none; opacity: 0; visibility: hidden;' : '';
+            ?>
+
+            <a
+                <?php
+                if (!$isGuest) {
+                    if ($_SESSION['statue'] === 'client') {
+                        echo 'href="' . asset('views/profil.php?modify') . '"';
+                    } elseif ($_SESSION['statue'] === 'admin') {
+                        echo 'href="' . asset('views/profil-admin.php') . '"';
+                    }
+                }
+                ?>
+                style="<?= $linkStyle ?>">
+                <i class="fa-light fa-user"></i>
+            </a>
+
+            <a href="<?= asset('views/favoris.php') ?>" style="<?= $linkStyle ?>">
+                <i class="fa-light fa-heart"></i>
+            </a>
+
+            <a href="<?= asset('views/cart.php') ?>" style="<?= $linkStyle ?>">
+                <i class="fa-light fa-cart-shopping"></i>
+            </a>
         </div>
+
     </div>
     <nav>
         <ul id="menuPogo">
@@ -42,9 +79,11 @@ $namePage = explode(".php", $arr[array_key_last($arr)])[0];
             <a href="<?php echo asset('views/marque.php') ?>">
                 <li class="<?php if ($namePage == 'marque') echo 'active' ?>">MARQUES</li>
             </a>
-            <a href="<?php echo asset('views/style-article.php') ?>">
-                <li class="<?php if ($namePage == 'style-article') echo 'active' ?>">MON STYLE</li>
-            </a>
+            <?php if (isset($_SESSION['statue']) && $_SESSION['statue'] !== 'guest'): ?>
+                <a href="<?php echo asset('views/style-article.php') ?>">
+                    <li class="<?php if ($namePage == 'style-article') echo 'active' ?>">MON STYLE</li>
+                </a>
+            <?php endif; ?>
         </ul>
     </nav>
     <script>

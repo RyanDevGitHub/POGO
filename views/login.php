@@ -22,8 +22,12 @@
                 <input type="password" name="mdp" placeholder="Mot de passe" minlength="4" required>
                 <input type="submit" value="Se connecter">
             </div>
+
             <button type="button" onclick="open_modal_mot_de_passe_oublier('open')">Mot de passe oublié</button>
         </form>
+        <a href="<?php echo route('controllers/AuthController.php') . '?guest=true'; ?>" class=" btn-guest-access">
+            👀 Accéder en tant qu'invité
+        </a>
     </div>
     <div class="modal">
         <div class="modal_mot_de_passe_oublier">

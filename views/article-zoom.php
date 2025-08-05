@@ -68,10 +68,34 @@ WHERE product_id = :product_id");
                         <option value="">L</option>
                         <option value="">XL</option>
                     </select>
-                    <input <?php if (!$quantity) {
-                                echo "disabled= 'disabled'";
-                            } ?> type="submit" id="submit-button" value="AJOUTER AU PANIER">
-                    <button type="button" onclick="add_favoris(<?php print($_GET['id_product']); ?>,<?php print($_SESSION['id']); ?>)" id="favoris-button">FAVORIS <i class="fa-light fa-heart"></i> </button>
+
+
+                    <?php
+                    $isGuest = isset($_SESSION['statue']) && $_SESSION['statue'] === 'guest';
+                    $shouldDisable = (!$quantity) || $isGuest;
+                    $style = $shouldDisable ? "opacity: 0.5; cursor: not-allowed;" : "";
+                    ?>
+
+                    <input
+                        type="submit"
+                        id="submit-button"
+                        value="AJOUTER AU PANIER"
+                        <?php if ($shouldDisable) echo "disabled='disabled'"; ?>
+                        style="<?= $style ?>">
+
+
+                    <?php
+                    $isGuest = isset($_SESSION['statue']) && $_SESSION['statue'] === 'guest';
+                    $btnStyle = $isGuest ? 'pointer-events: none; opacity: 0; visibility: hidden;' : '';
+                    ?>
+
+                    <button
+                        type="button"
+                        onclick="add_favoris(<?php echo $_GET['id_product']; ?>, <?php echo $_SESSION['id']; ?>)"
+                        id="favoris-button"
+                        style="<?= $btnStyle ?>">
+                        FAVORIS <i class="fa-light fa-heart"></i>
+                    </button>
                 </form>
             </div>
             <div class="description">
