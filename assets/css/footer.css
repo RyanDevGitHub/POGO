@@ -53,10 +53,6 @@ footer .info .info-assistance,
     font-size: 16px;
   }
 
-  header img {
-    width: 50%;
-  }
-
   .section-article.column {
     grid-template-columns: 1fr;
   }

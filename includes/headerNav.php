@@ -63,7 +63,9 @@ $namePage = explode(".php", $arr[array_key_last($arr)])[0];
                 <i class="fa-light fa-cart-shopping"></i>
             </a>
         </div>
-
+        <div class="burger" id="burgerMenu">
+            <i class="fa fa-bars"></i>
+        </div>
     </div>
     <nav>
         <ul id="menuPogo">
@@ -97,6 +99,14 @@ $namePage = explode(".php", $arr[array_key_last($arr)])[0];
         //     search_text.classList.toggle("active");
         //     suggestion_container.classList.toggle("active");
         // });
+        const burger = document.getElementById("burgerMenu");
+        const nav = document.querySelector("nav");
+
+        burger.addEventListener("click", () => {
+            nav.classList.toggle("show");
+        });
     </script>
     <script src="<?php echo asset('assets/js/auto-complete.js') ?>"> </script>
+
+
 </header>

@@ -1,32 +1,33 @@
 /* SECTION FAVORIS */
 
 section {
-  background-color: #ffffff;
+  /* background-color: #ffffff;
   margin: 2% 10%;
-  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42); */
   align-items: center;
   display: flex;
   flex-direction: column;
 }
 #titleRes {
   text-align: center;
-  padding: 15px;
-  font-size: 22px;
+  /* padding: 15px;
+  font-size: 22px; */
 }
 .contentPro {
   grid-column: 1;
   grid-row: 2;
   display: grid;
   grid-template-columns:
-    minmax(100px, 25%) minmax(100px, 25%) minmax(100px, 25%)
-    minmax(100px, 25%);
-  grid-template-rows: minmax(100px, 25%) minmax(100px, 25%) minmax(100px, 25%) minmax(
-      100px,
+    minmax(90px, 25%) minmax(90px, 25%) minmax(90px, 25%)
+    minmax(90px, 25%);
+  grid-template-rows: minmax(90px, 25%) minmax(90px, 25%) minmax(90px, 25%) minmax(
+      90px,
       25%
     );
+  padding: 1rem;
 }
 section a {
-  margin: 1rem;
+  /* margin: 1rem; */
 }
 section a div.article {
   max-width: 100%;

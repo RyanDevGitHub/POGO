@@ -36,92 +36,80 @@ include(include_path('includes/headerNav.php'));
 include(include_path('controllers/SearchProductController.php'));
 ?>
 <section>
-    <div class=" article-zoom">
-        <div class="img-product">
-            <div class="img">
-                <img width="200px" height="350px" src="<?php echo asset('assets/imgs/img-products/') . $imagePro; ?>" alt="">
-            </div>
-            <div class="galerie-button">
-                <button>VOIR LA GALERIE</button>
-            </div>
+    <!-- <div class=" article-zoom"> -->
+    <div class="img-product">
+        <div class="img">
+            <img width="200px" height="350px" src="<?php echo asset('assets/imgs/img-products/') . $imagePro; ?>" alt="">
         </div>
+        <div class="galerie-button">
+            <button>VOIR LA GALERIE</button>
+        </div>
+    </div>
 
-        <div class="action-product">
-            <div class="title-avis">
-                <p><?php echo $titlePro; ?></p>
-                <?php include_once(include_path('database/db.php'));;
-                $pdostat = $pdo->prepare("SELECT ROUND(AVG(note_avis))
+    <div class="action-product">
+        <div class="title-avis">
+            <p><?php echo $titlePro; ?></p>
+            <?php include_once(include_path('database/db.php'));;
+            $pdostat = $pdo->prepare("SELECT ROUND(AVG(note_avis))
 FROM avis
 WHERE product_id = :product_id");
-                $pdostat->bindParam(":product_id", $_GET["id_product"]);
-                $pdostat->execute();
-                $row = $pdostat->fetch();
-                //print_r($row);
+            $pdostat->bindParam(":product_id", $_GET["id_product"]);
+            $pdostat->execute();
+            $row = $pdostat->fetch();
+            //print_r($row);
+            ?>
+            <img src="<?php echo asset('assets/imgs/rating-stars/') ?><?php print_r($row[0]); ?>STARS.png" alt="">
+        </div>
+        <div class="addToCart">
+            <form class="form-addToCart" action="<?php echo route('controllers/AddCartController.php') ?>?idProduct=<?php echo $idProduct; ?>" method="POST">
+                <select name="taille" id="taille" required>
+                    <option value="" selected disabled hidden>Taille</option>
+                    <option value="S">S</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <?php
+                $isGuest = isset($_SESSION['statue']) && $_SESSION['statue'] === 'guest';
+                $shouldDisable = (!$quantity) || $isGuest;
+                $style = $shouldDisable ? "opacity: 0.5; cursor: not-allowed;" : "";
                 ?>
-                <img src="<?php echo asset('assets/imgs/rating-stars/') ?><?php print_r($row[0]); ?>STARS.png" alt="">
-            </div>
-            <div class="addToCart">
-                <form class="form-addToCart" action="<?php echo route('controllers/AddCartController.php') ?>?idProduct=<?php echo $idProduct; ?>" method="POST">
-                    <select name="" id="taille">
-                        <option value="none" selected disabled hidden>Taille</option>
-                        <option value="">S</option>
-                        <option value="">L</option>
-                        <option value="">XL</option>
-                    </select>
+
+                <input
+                    type="submit"
+                    id="submit-button"
+                    value="AJOUTER AU PANIER"
+                    <?php if ($shouldDisable) echo "disabled='disabled'"; ?>
+                    style="<?= $style ?>">
 
 
-                    <?php
-                    $isGuest = isset($_SESSION['statue']) && $_SESSION['statue'] === 'guest';
-                    $shouldDisable = (!$quantity) || $isGuest;
-                    $style = $shouldDisable ? "opacity: 0.5; cursor: not-allowed;" : "";
-                    ?>
+                <?php
+                $isGuest = isset($_SESSION['statue']) && $_SESSION['statue'] === 'guest';
+                $btnStyle = $isGuest ? 'pointer-events: none; opacity: 0; visibility: hidden;' : '';
+                ?>
 
-                    <input
-                        type="submit"
-                        id="submit-button"
-                        value="AJOUTER AU PANIER"
-                        <?php if ($shouldDisable) echo "disabled='disabled'"; ?>
-                        style="<?= $style ?>">
-
-
-                    <?php
-                    $isGuest = isset($_SESSION['statue']) && $_SESSION['statue'] === 'guest';
-                    $btnStyle = $isGuest ? 'pointer-events: none; opacity: 0; visibility: hidden;' : '';
-                    ?>
-
-                    <button
-                        type="button"
-                        onclick="add_favoris(<?php echo $_GET['id_product']; ?>, <?php echo $_SESSION['id']; ?>)"
-                        id="favoris-button"
-                        style="<?= $btnStyle ?>">
-                        FAVORIS <i class="fa-light fa-heart"></i>
-                    </button>
-                </form>
-            </div>
-            <div class="description">
-                <p><?php echo $desc ?></p>
-            </div>
+                <button
+                    type="button"
+                    onclick="add_favoris(<?php echo $_GET['id_product']; ?>, <?php echo $_SESSION['id']; ?>)"
+                    id="favoris-button"
+                    style="<?= $btnStyle ?>">
+                    FAVORIS <i class="fa-light fa-heart"></i>
+                </button>
+            </form>
+        </div>
+        <div class="description">
+            <p><?php echo $desc ?></p>
         </div>
     </div>
     <div class="make_avis">
         <h2>FAIRE UN AVIS</h2>
         <form action="<?php echo route('controllers/AddAvisController.php'); ?>" class="form_make_avis">
             <div class="zone_text_avis">
-                <input type="text" name=title_avis placeholder="Entrer le titre de votre avis" required>
-                <textarea name="desc_avis" id="" cols="30" rows="5" placeholder="Entrer votre avis" required></textarea>
+                <input type="text" name="title_avis" placeholder="Entrer le titre de votre avis" required>
+                <textarea name="desc_avis" cols="30" rows="5" placeholder="Entrer votre avis" required></textarea>
                 <input type="submit" value="VALIDER">
             </div>
             <div class="stars">
-                <input class="star star-5" id="star-5-2" type="radio" name="star" value="5" required />
-                <label class="star star-5" for="star-5-2"></label>
-                <input class="star star-4" id="star-4-2" type="radio" name="star" value="4" />
-                <label class="star star-4" for="star-4-2"></label>
-                <input class="star star-3" id="star-3-2" type="radio" name="star" value="3" />
-                <label class="star star-3" for="star-3-2"></label>
-                <input class="star star-2" id="star-2-2" type="radio" name="star" value="2" />
-                <label class="star star-2" for="star-2-2"></label>
-                <input class="star star-1" id="star-1-2" type="radio" name="star" value="1" />
-                <label class="star star-1" for="star-1-2"></label>
+                <!-- étoiles -->
             </div>
             <input type="hidden" name="id_product" value="<?php print($_GET['id_product']) ?>">
         </form>
@@ -208,8 +196,8 @@ WHERE product_id = :product_id");
                     <h4 id="title_<?php if (isset($row[0]["id_avis"])) {
                                         print($row[0]["id_avis"]);
                                     }  ?>"> <?php if (isset($row[0]["title_avis"])) {
-                                                print($row[0]["title_avis"]);
-                                            } ?>
+                                                    print($row[0]["title_avis"]);
+                                                } ?>
                     </h4>
                     <p id="desc_<?php if (isset($row[0]["id_avis"])) {
                                     print($row[0]["id_avis"]);
@@ -240,8 +228,8 @@ WHERE product_id = :product_id");
                     <h4 id="title_<?php if (isset($row[1]["id_avis"])) {
                                         print($row[1]["id_avis"]);
                                     }  ?>"><?php if (isset($row[1]["title_avis"])) {
-                                                print($row[1]["title_avis"]);
-                                            } ?></h4>
+                                                    print($row[1]["title_avis"]);
+                                                } ?></h4>
                     <p id="desc_<?php if (isset($row[1]["id_avis"])) {
                                     print($row[1]["id_avis"]);
                                 }  ?>"><?php if (isset($row[1]["desc_avis"]))  print($row[1]["desc_avis"]); ?></p>
@@ -325,7 +313,7 @@ WHERE product_id = :product_id");
             <button id="button_open_avis" onclick="open_avis()">VOIR MOINS</button>
         </div>
 
-    </div>
+        <!-- </div> -->
 
 </section>
 <?php

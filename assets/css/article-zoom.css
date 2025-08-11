@@ -75,7 +75,6 @@ section {
 }
 .action-product .title-avis p {
   padding: 1rem;
-  padding-left: 3rem;
 }
 .action-product .title-avis img {
   width: 30%;
@@ -149,7 +148,7 @@ input[type="submit"]:hover {
 /* DEBUT MAKE AVIS */
 
 .make_avis {
-  width: 70%;
+  width: 100%;
   height: 500px;
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
   background-color: #ffffff;
@@ -233,9 +232,9 @@ label.star:before {
 .avis {
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
   background-color: #ffffff;
-  height: 50%;
-  width: 70%;
-  margin: 1rem;
+  height: auto;
+  width: 100%;
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -246,8 +245,12 @@ label.star:before {
 /* DEBUT AVIS PRESENTATION */
 .avis-presentation {
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
+  align-items: stretch; /* force même hauteur */
+}
+.avis-presentation > * {
+  flex: 1; /* largeur égale */
+  margin: 0 10px; /* espace entre colonnes */
 }
 .avis-presentation .note-producte .note {
   height: auto;
@@ -273,7 +276,6 @@ label.star:before {
 /* FIN AVIS PRESENTATION */
 .avis .avis-presentation .first-avis {
   background-color: #e1e1e1;
-  width: 30%;
   height: auto;
   border: solid;
   margin-bottom: 1rem;
@@ -307,14 +309,14 @@ label.star:before {
 }
 .avis .avis-presentation .seconde-avis {
   background-color: #e1e1e1;
-  width: 30%;
+
   height: auto;
   border: solid;
   margin-bottom: 1rem;
 }
 .avis .avis-presentation .note-producte {
   background-color: #e1e1e1;
-  width: 30%;
+
   height: auto;
   border: solid;
   margin-bottom: 1rem;
@@ -462,3 +464,128 @@ label.star_modify:before {
 
 /* FIN CONATAINER AVIS */
 /* FIN ARTICLE CONTAINER*/
+@media (max-width: 768px) {
+  .article-zoom {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .img-product,
+  .action-product {
+    width: 100%;
+  }
+
+  .action-product .form-addToCart {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .action-product .addToCart #submit-button,
+  .action-product .addToCart #favoris-button {
+    grid-column: auto;
+    grid-row: auto;
+    width: 80%;
+    margin: 1rem auto;
+  }
+
+  .action-product .title-avis {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .action-product .title-avis img {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .form_make_avis {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form_make_avis .zone_text_avis,
+  .form_make_avis .stars {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .form_make_avis input[type="submit"] {
+    width: 80%;
+  }
+
+  div.stars {
+    font-size: 24px; /* Réduire taille des étoiles sur mobile */
+  }
+}
+@media (max-width: 768px) {
+  .form_make_avis {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .form_make_avis .zone_text_avis,
+  .form_make_avis .stars {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .form_make_avis input[type="submit"] {
+    width: 80%;
+  }
+
+  .stars label.star {
+    font-size: 28px;
+    padding: 5px;
+  }
+  @media (max-width: 768px) {
+    .avis-presentation {
+      flex-direction: column;
+    }
+
+    .note-producte,
+    .first-avis,
+    .seconde-avis {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .note-spe {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .note-spe div {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .avis-presentation {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .note-producte,
+  .first-avis,
+  .seconde-avis {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .note-spe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .note-spe div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

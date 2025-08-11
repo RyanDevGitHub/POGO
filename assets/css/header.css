@@ -210,3 +210,75 @@ nav ul li:hover {
 }
 
 /*  FIN HEADER */
+
+/* Cacher le nav par défaut */
+nav {
+  display: none;
+}
+/* Cacher le nav par défaut */
+nav {
+  display: none;
+}
+
+/* En mobile : positionner le nav au-dessus du header */
+@media screen and (max-width: 768px) {
+  nav {
+    position: absolute;
+    top: 164px;
+    left: 0;
+    width: 100%;
+    border-radius: 4px;
+    background-color: white;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* caché au départ */
+    flex-direction: column;
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  #menuPogo {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #menuPogo a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 10px 20px;
+  }
+
+  .burger {
+    display: block;
+    cursor: pointer;
+    font-size: 24px;
+    position: relative;
+    z-index: 1000; /* pour que le bouton soit cliquable */
+    padding: 0 1rem;
+  }
+}
+
+/* En desktop, on garde le nav visible normalement */
+@media screen and (min-width: 769px) {
+  nav {
+    display: block !important;
+    position: static;
+    box-shadow: none;
+  }
+
+  .burger {
+    display: none;
+  }
+}
+/* Masquer icon-search en mobile */
+@media (max-width: 768px) {
+  .icon-search {
+    display: none;
+  }
+}

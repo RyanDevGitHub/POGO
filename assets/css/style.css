@@ -12,7 +12,7 @@
 
 .btn-guest-access {
   display: inline-block;
-  padding: 10px 16px;
+  padding: 0.75rem;
   font-size: 0.8rem;
   font-weight: bold;
   background-color: #f9a826;
@@ -25,7 +25,7 @@
   transition: transform 0.3s ease, background-color 0.3s ease;
   animation: pulseGlow 2.5s infinite;
   margin-top: 30px;
-  width: 100%;
+  width: auto;
   max-width: 340px;
   box-shadow: 0 6px 18px rgba(249, 168, 38, 0.3);
 }
@@ -47,6 +47,11 @@
   padding: 0;
   font-size: 20px;
   font-family: FontAwesome;
+}
+@media (max-width: 768px) {
+  * {
+    font-size: 16px;
+  }
 }
 a {
   outline: none;
